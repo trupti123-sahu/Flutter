@@ -1,0 +1,64 @@
+import 'dart:async';  
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: SplashScreen(),
+    debugShowCheckedModeBanner: false,
+  ));
+}
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  startTime() async {
+    var _duration = new Duration(seconds: 4);
+    return new Timer(_duration, navigationPage);
+  }
+
+  void navigationPage() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+  @override
+  void initState() {
+    super.initState();
+    startTime();
+  }
+   
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+
+              Image(
+                image: AssetImage("image/logo.png"),
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+              ),
+              Text(
+                "WELCOME TO FLUTTER",
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 20.5,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
